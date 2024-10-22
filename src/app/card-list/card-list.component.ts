@@ -17,6 +17,6 @@ export class CardListComponent {
   cardList: Card[] = [];
 
   constructor() {
-    this.cardList = this.cardControllerService.getAllCards();
+    this.cardList = this.cardControllerService.getGamesCards();
   }
 }

@@ -3,9 +3,15 @@
 }
 
 .card {
-  width: 400px;
-  height: 400px;
+  width: 230px;
+  height: 230px;
   background-color: var(--card-background);
   color: var(--card-text);
   border: none;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: var(--card-background-hover);
+  transition: background-color 0.3s ease-in 0.3s;
 }

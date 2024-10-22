@@ -12,8 +12,10 @@ import { Card } from '../models/card';
 })
 export class CardComponent {
   @Input() card!: Card;
+  showDetails = false;
 
   displayDetails() {
+    this.showDetails = !this.showDetails;
     // console.log('display details = ', this.card);
   }
 }

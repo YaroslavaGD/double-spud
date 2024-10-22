@@ -1,4 +1,8 @@
 <button class="card" (click)="displayDetails()">
-  <p>name = {{ card.name }}</p>
-  <p>houses = {{ card.houses }}</p>
+  <div *ngIf="!showDetails">
+    <p>{{ card.name }}</p>
+  </div>
+  <div *ngIf="showDetails">
+    <p>{{ card.description }}</p>
+  </div>
 </button>
