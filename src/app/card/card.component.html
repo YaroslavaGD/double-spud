@@ -1,8 +1,8 @@
 <button class="card" (click)="displayDetails()">
-  <div *ngIf="!showDetails">
-    <p>{{ card.name }}</p>
+  <div *ngIf="!card.isOpen">
+    <p></p>
   </div>
-  <div *ngIf="showDetails">
-    <p>{{ card.description }}</p>
+  <div *ngIf="card.isOpen">
+    <p>{{ card.id }}</p>
   </div>
 </button>

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CardComponent } from '../card/card.component';
-import { CardControllerService } from '../card-controller.service';
 import { Card } from '../models/card';
+import { CardControllerService } from '../services/card-controller.service';
 
 @Component({
   selector: 'app-card-list',
@@ -12,11 +12,14 @@ import { Card } from '../models/card';
   templateUrl: './card-list.component.html',
   styleUrl: './card-list.component.scss',
 })
-export class CardListComponent {
-  cardControllerService: CardControllerService = inject(CardControllerService);
+export class CardListComponent implements OnInit {
   cardList: Card[] = [];
 
-  constructor() {
-    this.cardList = this.cardControllerService.getGamesCards();
+  constructor(private cardControllerService: CardControllerService) {}
+
+  ngOnInit(): void {
+    this.cardControllerService.gamesCard$.subscribe((cards) => {
+      this.cardList = cards;
+    });
   }
 }
