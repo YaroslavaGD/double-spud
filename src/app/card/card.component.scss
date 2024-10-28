@@ -9,9 +9,15 @@
   color: var(--card-text);
   border: none;
   cursor: pointer;
+  font-size: 2rem;
 }
 
 .card:hover {
   background-color: var(--card-background-hover);
   transition: background-color 0.3s ease-in 0.3s;
+}
+
+.card--hidden {
+  visibility: hidden;
+  pointer-events: none;
 }

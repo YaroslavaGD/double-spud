@@ -1,4 +1,9 @@
-<button class="card" (click)="displayDetails()">
+<button
+  class="card"
+  [class.card--hidden]="!card.isVisible"
+  [disabled]="!card.isVisible"
+  (click)="displayDetails()"
+>
   <div *ngIf="!card.isOpen">
     <p></p>
   </div>

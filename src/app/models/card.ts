@@ -5,4 +5,5 @@ export interface Card {
   houses: number;
   description: string;
   isOpen: boolean;
+  isVisible: boolean;
 }

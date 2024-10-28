@@ -18,6 +18,7 @@ export class CardControllerService {
         Если тебе нужен заботливый принц, который слушает и понимает, Spudrick — твой выбор.
         Его королевство славится лучшими картофельными пирогами на свете!`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 1,
@@ -29,6 +30,7 @@ export class CardControllerService {
         Он любит вызовы, но может оказаться слишком дерзким для некоторых.
         Ты готова к приключениям?`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 2,
@@ -39,6 +41,7 @@ export class CardControllerService {
         Его 88 домов под его защитой, и он всегда в поисках новых побед.
         Хочешь присоединиться к его приключениям и разделить его славу?`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 3,
@@ -49,6 +52,7 @@ export class CardControllerService {
         Friesian управляет 347 домами и точно знает, как достичь вершин.
         Но может ли он предложить что-то, кроме богатства? Только ты сможешь узнать.`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 4,
@@ -59,6 +63,7 @@ export class CardControllerService {
         Его королевство из 875 домов — рай для гурманов.
         Если тебе нравятся уют и веселье, Bakedan приглашает тебя разделить с ним его роскошные застолья!`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 5,
@@ -69,6 +74,7 @@ export class CardControllerService {
         Его королевство из 1577 домов — настоящая крепость.
         Russeton может защитить тебя от любых угроз, но готов ли ты к его холодной строгости?`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 6,
@@ -79,6 +85,7 @@ export class CardControllerService {
         Taterkins знает, как добиться своего, несмотря на свои скромные 6 домов.
         Он полагается на хитрость и шарм. Может, меньше значит больше?`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 7,
@@ -89,6 +96,7 @@ export class CardControllerService {
         Его королевство из 34 домов скрыто в тумане, а его прошлое покрыто тайнами.
         Тебе интересно узнать его секреты?`,
       isOpen: false,
+      isVisible: true,
     },
     {
       id: 8,
@@ -100,6 +108,7 @@ export class CardControllerService {
        Его страсть к знаниям делает его отличным собеседником, но его постоянные вопросы могут иногда утомлять.
        Готова ли ты помочь ему в поисках захватывающих историй?`,
       isOpen: false,
+      isVisible: true,
     },
   ];
 
@@ -107,7 +116,7 @@ export class CardControllerService {
     this.shuffleAndDublicateCards(this.initialCards)
   );
   private isChecking = false;
-  private isRemovingPair = false;
+  private isHidingPair = false;
   private firstCard: Card | null = null;
   private secondCard: Card | null = null;
 
@@ -133,7 +142,7 @@ export class CardControllerService {
     }
 
     if (this.areIdenticalCards()) {
-      this.removeMatchedCards(card);
+      this.hideMatchedCards(card);
       this.isChecking = false;
       return CardsCommands.FOUND_IDENTICAL;
     }
@@ -167,7 +176,7 @@ export class CardControllerService {
    * Checks if card action is blocked
    */
   private isCardCheckBlocked(card: Card): boolean {
-    return card.isOpen || this.isChecking || this.isRemovingPair;
+    return card.isOpen || this.isChecking || this.isHidingPair;
   }
 
   /**
@@ -231,17 +240,20 @@ export class CardControllerService {
   }
 
   /**
-   * Removes matched cards from the game and updates the state
+   * Hides matched cards from the game and updates the state
    */
-  private removeMatchedCards(card: Card): void {
-    if (this.isRemovingPair) return; // предотвращаем вызов, если уже происходит удаление
+  private hideMatchedCards(card: Card): void {
+    if (this.isHidingPair) return; // предотвращаем вызов, если уже запущен процесс скрывания карт
 
-    this.isRemovingPair = true;
+    this.isHidingPair = true;
     setTimeout(() => {
-      const updatedCards = this.getGamesCards().filter((c) => c.id !== card.id);
+      const updatedCards = this.getGamesCards().map((c) => {
+        if (c.id === card.id) return { ...c, isVisible: false };
+        return c;
+      });
       this.gamesCardsSubject.next(updatedCards);
       this.clearSelectedCards();
-      this.isRemovingPair = false;
+      this.isHidingPair = false;
     }, 1000);
   }
 }
