@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
-import { Card } from '../models/card';
-import { CardsCommands } from '../models/cardsCommands';
-import { CardControllerService } from '../services/card-controller.service';
+import { Card } from '../../models/card';
+import { CardsCommands } from '../../models/cardsCommands';
+import { CardControllerService } from '../../services/card-controller.service';
 
 @Component({
   selector: 'app-card',

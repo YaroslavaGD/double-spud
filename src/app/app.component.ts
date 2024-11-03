@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { CardListComponent } from './card-list/card-list.component';
+import { CardListComponent } from './main/card-list/card-list.component';
 
 @Component({
   selector: 'app-root',

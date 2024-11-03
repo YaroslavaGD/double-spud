@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
+import { Card } from '../../models/card';
+import { CardControllerService } from '../../services/card-controller.service';
 import { CardComponent } from '../card/card.component';
-import { Card } from '../models/card';
-import { CardControllerService } from '../services/card-controller.service';
 
 @Component({
   selector: 'app-card-list',
