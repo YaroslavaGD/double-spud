@@ -156,6 +156,19 @@ export class CardControllerService {
   }
 
   /**
+   * Resets the game: reinitializes cards and clears selected state.
+   */
+  resetGame() {
+    this.gamesCardsSubject.next(
+      this.shuffleAndDublicateCards(this.initialCards)
+    );
+    this.isChecking = false;
+    this.isHidingPair = false;
+    this.firstCard = null;
+    this.secondCard = null;
+  }
+
+  /**
    * Return all games cards
    */
   private getGamesCards(): Card[] {
