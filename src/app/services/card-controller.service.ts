@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+import { initialCards } from '../data/cards-data';
 import { Card } from '../models/card';
 import { CardsCommands } from '../models/cardsCommands';
 
@@ -8,109 +9,7 @@ import { CardsCommands } from '../models/cardsCommands';
   providedIn: 'root',
 })
 export class CardControllerService {
-  private readonly initialCards: Card[] = [
-    {
-      id: 0,
-      arrayId: 0,
-      name: 'Prince Spudrick the Wise',
-      houses: 100,
-      description: `Мудрый, спокойный и добрый правитель 100 домов.
-        Если тебе нужен заботливый принц, который слушает и понимает, Spudrick — твой выбор.
-        Его королевство славится лучшими картофельными пирогами на свете!`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 1,
-      arrayId: 1,
-      name: 'Prince Chipoleon the Bold',
-      houses: 10,
-      description: `Маленькое королевство, но большие амбиции.
-        Chipoleon готов рискнуть всем ради славы и богатства.
-        Он любит вызовы, но может оказаться слишком дерзким для некоторых.
-        Ты готова к приключениям?`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 2,
-      arrayId: 2,
-      name: 'Prince Hashmund the Adventurer',
-      houses: 88,
-      description: `Бесстрашный воин, который жаждет приключений.
-        Его 88 домов под его защитой, и он всегда в поисках новых побед.
-        Хочешь присоединиться к его приключениям и разделить его славу?`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 3,
-      arrayId: 3,
-      name: 'Prince Friesian the Golden',
-      houses: 347,
-      description: `Успех, богатство и золото — его мир.
-        Friesian управляет 347 домами и точно знает, как достичь вершин.
-        Но может ли он предложить что-то, кроме богатства? Только ты сможешь узнать.`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 4,
-      arrayId: 4,
-      name: 'Prince Bakedan the Feastmaster',
-      houses: 875,
-      description: `Добродушный и весёлый принц, который обожает устраивать пиры.
-        Его королевство из 875 домов — рай для гурманов.
-        Если тебе нравятся уют и веселье, Bakedan приглашает тебя разделить с ним его роскошные застолья!`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 5,
-      arrayId: 5,
-      name: 'Prince Russeton the Strong',
-      houses: 1577,
-      description: `Суровый и могучий правитель, который не знает поражений.
-        Его королевство из 1577 домов — настоящая крепость.
-        Russeton может защитить тебя от любых угроз, но готов ли ты к его холодной строгости?`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 6,
-      arrayId: 6,
-      name: 'Prince Taterkins the Charming',
-      houses: 6,
-      description: `Маленькое королевство и большое обаяние.
-        Taterkins знает, как добиться своего, несмотря на свои скромные 6 домов.
-        Он полагается на хитрость и шарм. Может, меньше значит больше?`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 7,
-      arrayId: 7,
-      name: 'Prince Totaro the Mysterious',
-      houses: 34,
-      description: `Загадочный принц из земель, о которых ходят легенды.
-        Его королевство из 34 домов скрыто в тумане, а его прошлое покрыто тайнами.
-        Тебе интересно узнать его секреты?`,
-      isOpen: false,
-      isVisible: true,
-    },
-    {
-      id: 8,
-      arrayId: 8,
-      name: 'Prince Pommes the Curious',
-      houses: 42,
-      description: `Prince Pommes, известный своей неуемной любознательностью, управляет 42 домами в живописной долине.
-       Помме всегда готов на приключения и открытие чего-то нового.
-       Его страсть к знаниям делает его отличным собеседником, но его постоянные вопросы могут иногда утомлять.
-       Готова ли ты помочь ему в поисках захватывающих историй?`,
-      isOpen: false,
-      isVisible: true,
-    },
-  ];
+  private readonly initialCards: Card[] = initialCards;
 
   private gamesCardsSubject = new BehaviorSubject<Card[]>(
     this.shuffleAndDublicateCards(this.initialCards)
