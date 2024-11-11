@@ -18,8 +18,10 @@ export class CardControllerService {
   private isHidingPair = false;
   private firstCard: Card | null = null;
   private secondCard: Card | null = null;
+  private matchedCardsSubject = new BehaviorSubject<Card[]>([]);
 
   gamesCard$ = this.gamesCardsSubject.asObservable();
+  matchedCards$ = this.matchedCardsSubject.asObservable();
 
   /**
    * Main card check method - handles game card logic and state changes
@@ -61,6 +63,7 @@ export class CardControllerService {
     this.gamesCardsSubject.next(
       this.shuffleAndDublicateCards(this.initialCards)
     );
+    this.matchedCardsSubject.next([]);
     this.isChecking = false;
     this.isHidingPair = false;
     this.firstCard = null;
@@ -164,8 +167,21 @@ export class CardControllerService {
         return c;
       });
       this.gamesCardsSubject.next(updatedCards);
+      this.addMatchedCard(card);
       this.clearSelectedCards();
       this.isHidingPair = false;
     }, 1000);
+  }
+
+  /**
+   * Adds a card to the matched cards list if not already present
+   * @param card - Card to add
+   */
+  private addMatchedCard(card: Card) {
+    const matchedCards = this.matchedCardsSubject.value;
+
+    if (!matchedCards.some((matchedCard) => matchedCard.id === card.id)) {
+      this.matchedCardsSubject.next([...matchedCards, card]);
+    }
   }
 }

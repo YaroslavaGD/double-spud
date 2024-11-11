@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
+import { CardListComponent } from '../cards/card-list/card-list.component';
 import { HeaderComponent } from '../header/header.component';
-import { CardListComponent } from './card-list/card-list.component';
 
 @Component({
   selector: 'app-main',
