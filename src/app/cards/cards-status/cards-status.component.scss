@@ -1,5 +1,13 @@
 .monster {
   width: 80px;
-  border: 1px solid #dde3c5;
+  height: 80px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--card-text);
   border-left: 1px solid transparent;
+  cursor: pointer;
+}
+
+.monster__image {
+  width: 80px;
 }

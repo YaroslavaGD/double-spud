@@ -12,7 +12,7 @@ export class CardControllerService {
   private readonly initialCards: Card[] = initialCards;
 
   private gamesCardsSubject = new BehaviorSubject<Card[]>(
-    this.shuffleAndDublicateCards(this.initialCards)
+    this.shuffleAndDuplicateCards(this.initialCards)
   );
   private isChecking = false;
   private isHidingPair = false;
@@ -61,7 +61,7 @@ export class CardControllerService {
    */
   resetGame() {
     this.gamesCardsSubject.next(
-      this.shuffleAndDublicateCards(this.initialCards)
+      this.shuffleAndDuplicateCards(this.initialCards)
     );
     this.matchedCardsSubject.next([]);
     this.isChecking = false;
@@ -95,9 +95,9 @@ export class CardControllerService {
   }
 
   /**
-   * Dublicates and shuffles initial cards to create game-ready cards
+   * Duplicates and shuffles initial cards to create game-ready cards
    */
-  private shuffleAndDublicateCards(cards: Card[]): Card[] {
+  private shuffleAndDuplicateCards(cards: Card[]): Card[] {
     return cards
       .flatMap((card) => [card, { ...card }])
       .sort(() => Math.random() - 0.5)
@@ -133,7 +133,7 @@ export class CardControllerService {
       }
       this.clearSelectedCards();
       this.isChecking = false;
-    }, 1000);
+    }, 500);
   }
 
   /**
@@ -170,7 +170,7 @@ export class CardControllerService {
       this.addMatchedCard(card);
       this.clearSelectedCards();
       this.isHidingPair = false;
-    }, 1000);
+    }, 500);
   }
 
   /**

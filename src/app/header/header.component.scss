@@ -49,9 +49,9 @@
 
 .princess {
   color: #ffffff;
-  fill: #dde3c5;
+  fill: var(--card-text);
   cursor: pointer;
   width: 150px;
   padding: 0;
-  border: 1px solid #dde3c5;
+  border: 1px solid var(--card-text);
 }
