@@ -1,12 +1,5 @@
 <div class="monster-list">
-  <button
-    *ngFor="let card of cardsStatus"
-    class="monster"
-  >
-    <img
-      class="monster__image"
-      [src]="card.image"
-      alt=""
-    />
+  <button *ngFor="let card of cardsStatus" class="monster">
+    <img class="monster__image" [src]="card.image" alt="" />
   </button>
 </div>

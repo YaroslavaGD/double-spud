@@ -4,16 +4,84 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba($color: #000000, $alpha: 0.7);
+  background-color: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.dialog--open {
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  pointer-events: auto;
+  opacity: 1;
+  transition: all 0.3s ease;
 }
 
 .dialog-inner {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40%;
-  height: 70%;
-  color: var(--card-background);
-  background: rgba($color: #eee5ee, $alpha: 0.7);
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 90%;
+  color: #ffffff;
+  background: rgb(123 122 123 / 70%);
+  transition: transform 0.3s ease;
+}
+
+.dialog--open .dialog-inner {
   transform: translate(-50%, -50%);
+  transition: transform 0.3s ease;
+}
+
+.dialog__header,
+.dialog__name {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.dialog__header {
+  font-size: 1.5em;
+  padding: 0.3em;
+}
+
+.dialog__name {
+  font-size: 2.5em;
+  padding: 0.5em;
+  padding-bottom: 0.3em;
+}
+
+.dialog__img {
+  display: block;
+  flex-grow: 1;
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.dialog__text {
+  padding: 2em 1em 2.5em;
+  margin: 0;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.dialog__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 70px;
+  height: 70px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.dialog__close:hover {
+  transform: scale(1.1);
 }
