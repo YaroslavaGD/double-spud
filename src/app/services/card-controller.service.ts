@@ -18,10 +18,13 @@ export class CardControllerService {
   private isHidingPair = false;
   private firstCard: Card | null = null;
   private secondCard: Card | null = null;
+
   private matchedCardsSubject = new BehaviorSubject<Card[]>([]);
+  private isEndGameSubject = new BehaviorSubject<boolean>(false);
 
   gamesCard$ = this.gamesCardsSubject.asObservable();
   matchedCards$ = this.matchedCardsSubject.asObservable();
+  isEndGame$ = this.isEndGameSubject.asObservable();
 
   /**
    * Main card check method - handles game card logic and state changes
@@ -68,6 +71,7 @@ export class CardControllerService {
     this.isHidingPair = false;
     this.firstCard = null;
     this.secondCard = null;
+    this.isEndGameSubject.next(false);
   }
 
   /**
@@ -182,6 +186,20 @@ export class CardControllerService {
 
     if (!matchedCards.some((matchedCard) => matchedCard.id === card.id)) {
       this.matchedCardsSubject.next([...matchedCards, card]);
+
+      this.checkEndGame();
+    }
+  }
+
+  /**
+   * Checks if the game is over and updates the end game state
+   */
+  private checkEndGame() {
+    const matchedCardsCount = this.matchedCardsSubject.value.length;
+    const totalCardsCount = this.initialCards.length;
+
+    if (matchedCardsCount === totalCardsCount) {
+      this.isEndGameSubject.next(true);
     }
   }
 }

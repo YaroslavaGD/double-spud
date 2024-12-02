@@ -2,8 +2,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 0;
+  height: 0;
   background-color: none;
   pointer-events: none;
   opacity: 0;
@@ -11,6 +11,8 @@
 }
 
 .dialog--open {
+  width: 100%;
+  height: 100%;
   background-color: rgba($color: #000000, $alpha: 0.7);
   pointer-events: auto;
   opacity: 1;
@@ -23,16 +25,18 @@
   left: 50%;
   display: flex;
   flex-direction: column;
-  width: 70%;
-  height: 90%;
+  width: 0;
+  height: 0;
   color: #ffffff;
   background: rgb(123 122 123 / 70%);
   transition: transform 0.3s ease;
 }
 
 .dialog--open .dialog-inner {
+  width: 70%;
+  height: 90%;
   transform: translate(-50%, -50%);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .dialog__header,

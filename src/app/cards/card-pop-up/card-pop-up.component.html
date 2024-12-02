@@ -1,15 +1,18 @@
-<div class="dialog dialog--open">
-  <div class="dialog-inner">
-    <button class="dialog__close">
+<div class="dialog" [class.dialog--open]="isOpen">
+  <div class="dialog-inner" *ngIf="card; else noCard">
+    <button class="dialog__close" (click)="onClose()">
       <img src="../../../assets/close.svg" alt="" />
     </button>
     <h2 class="dialog__header">End Of The Game</h2>
-    <h3 class="dialog__name">Prince Spudrick the Wise</h3>
-    <img class="dialog__img" src="../../../assets/monsters/1.svg" alt="" />
-    <p class="dialog__text">
-      Мудрый, спокойный и добрый правитель 100 домов. Если тебе нужен заботливый
-      принц, который слушает и понимает, Spudrick — твой выбор. Его королевство
-      славится лучшими картофельными пирогами на свете!
-    </p>
+    <h3 class="dialog__name">{{ card.name }}</h3>
+    <img class="dialog__img" [src]="card.image" [alt]="card.name" />
+    <p class="dialog__text">{{ card.description }}</p>
   </div>
+  <ng-template #noCard>
+    <button class="dialog__close" (click)="onClose()">
+      <img src="../../../assets/close.svg" alt="" />
+      <h2 class="dialog__header">Принц не найден</h2>
+      <p class="dialog__text">Пожалуйста попробуйте еще раз</p>
+    </button>
+  </ng-template>
 </div>
