@@ -2,9 +2,9 @@
   display: block;
   margin: 0 auto;
   text-align: center;
-  padding: 0.5rem;
   color: var(--card-text);
-  padding: 1rem 5rem 0;
+  min-width: 99.063rem;
+  padding: 1.3rem 0 0;
 }
 
 .header {
@@ -51,7 +51,8 @@
   color: #ffffff;
   fill: var(--card-text);
   cursor: pointer;
-  width: 150px;
+  width: 10.688rem;
+  height: 13.813rem;
   padding: 0;
-  border: 1px solid var(--card-text);
+  background-color: var(--card-background);
 }

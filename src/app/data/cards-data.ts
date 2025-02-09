@@ -111,4 +111,17 @@ export const initialCards: Card[] = [
     isOpen: false,
     isVisible: true,
   },
+  {
+    id: 9,
+    arrayId: 9,
+    image: '/assets/monsters/10.svg',
+    name: 'Prince Pommes the Curious',
+    houses: 73,
+    description: `Prince Gratin – утонченный и элегантный романтик, чьи 73 дома утопают в розах и свечах.
+      Он известен своими поэтическими речами, нежной душой и безупречными манерами.
+      В его замке каждую ночь играет живая музыка, а воздух наполнен ароматом печеного картофеля и пряностей.
+      Готова ли ты стать музой для самого очаровательного принца картофельного королевства?`,
+    isOpen: false,
+    isVisible: true,
+  },
 ];

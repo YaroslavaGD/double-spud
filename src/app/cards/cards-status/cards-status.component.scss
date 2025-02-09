@@ -1,13 +1,20 @@
+.monster-list {
+  padding: 1.41rem 3.92rem;
+}
+
 .monster {
-  width: 80px;
-  height: 80px;
-  padding: 0;
-  background: transparent;
-  border: 1px solid var(--card-text);
-  border-left: 1px solid transparent;
+  display: inline-flex;
+  width: 120px;
+  height: 154px;
+  padding: 10px;
+  background: var(--card-background);
   cursor: pointer;
 }
 
 .monster__image {
-  width: 80px;
+  width: 100%;
+}
+
+.monster + .monster {
+  margin-left: 5px;
 }

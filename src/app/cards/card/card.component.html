@@ -4,8 +4,12 @@
   [disabled]="!card.isVisible"
   (click)="displayDetails()"
 >
-  <div *ngIf="!card.isOpen">
-    <p></p>
+  <div class="card__background" *ngIf="!card.isOpen">
+    <img
+      class="card__image--cover"
+      [src]="'/assets/ui/card_cover.png'"
+      alt=""
+    />
   </div>
   <div *ngIf="card.isOpen">
     <img class="card__image" [src]="card.image" alt="" />
