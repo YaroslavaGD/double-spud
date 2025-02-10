@@ -12,12 +12,17 @@ import { CardControllerService } from 'src/app/services/card-controller.service'
 })
 export class CardsStatusComponent implements OnInit {
   cardsStatus: Card[] = [];
+  lastMatchedPair: Card[] | null = null; // Последняя пара
 
   constructor(private cardControllerService: CardControllerService) {}
 
   ngOnInit(): void {
     this.cardControllerService.matchedCards$.subscribe((cards) => {
       this.cardsStatus = cards;
+    });
+
+    this.cardControllerService.lastMatchedPair$.subscribe((pair) => {
+      this.lastMatchedPair = pair;
     });
   }
 }

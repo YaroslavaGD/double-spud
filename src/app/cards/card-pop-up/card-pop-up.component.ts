@@ -12,6 +12,8 @@ import { CardControllerService } from 'src/app/services/card-controller.service'
   styleUrl: './card-pop-up.component.scss',
 })
 export class CardPopUpComponent implements OnInit, OnDestroy {
+  private clickSound = new Audio('/assets/sounds/start-button.wav');
+  private endSound = new Audio('/assets/sounds/end-game.wav');
   card: Card | null = null;
   isOpen: boolean = false;
   lastCards: Card[] = [];
@@ -21,7 +23,7 @@ export class CardPopUpComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.cardControllerService.matchedCards$.subscribe((cards) => {
+      this.cardControllerService.lastMatchedPair$.subscribe((cards) => {
         this.lastCards = cards;
       })
     );
@@ -29,6 +31,7 @@ export class CardPopUpComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.cardControllerService.isEndGame$.subscribe((isEnd) => {
         if (isEnd) {
+          this.playEndSound();
           this.card = this.lastCards[this.lastCards.length - 1] || null;
           this.isOpen = true;
         }
@@ -38,9 +41,25 @@ export class CardPopUpComponent implements OnInit, OnDestroy {
 
   onClose() {
     this.isOpen = false;
+    this.resetGame();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  private resetGame() {
+    this.playClickSound();
+    this.cardControllerService.resetGame();
+  }
+
+  private playEndSound() {
+    this.endSound.currentTime = 0;
+    this.endSound.play();
+  }
+
+  private playClickSound() {
+    this.clickSound.currentTime = 0;
+    this.clickSound.play();
   }
 }

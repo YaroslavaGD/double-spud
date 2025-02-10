@@ -3,9 +3,9 @@
     <button class="dialog__close" (click)="onClose()">
       <img src="../../../assets/close.svg" alt="" />
     </button>
-    <h2 class="dialog__header">End Of The Game</h2>
+    <h2 class="dialog__header">Конец игры</h2>
     <h3 class="dialog__name">{{ card.name }}</h3>
-    <img class="dialog__img" [src]="card.image" [alt]="card.name" />
+    <img class="dialog__img" [src]="card.imageBig" [alt]="card.name" />
     <p class="dialog__text">{{ card.description }}</p>
   </div>
   <ng-template #noCard>

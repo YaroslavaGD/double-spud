@@ -3,6 +3,7 @@ export interface Card {
   arrayId: number;
   name: string;
   image: string;
+  imageBig: string;
   houses: number;
   description: string;
   isOpen: boolean;

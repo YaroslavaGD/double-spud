@@ -20,10 +20,12 @@ export class CardControllerService {
   private secondCard: Card | null = null;
 
   private matchedCardsSubject = new BehaviorSubject<Card[]>([]);
+  private lastMatchedPairSubject = new BehaviorSubject<Card[]>([]);
   private isEndGameSubject = new BehaviorSubject<boolean>(false);
 
   gamesCard$ = this.gamesCardsSubject.asObservable();
   matchedCards$ = this.matchedCardsSubject.asObservable();
+  lastMatchedPair$ = this.lastMatchedPairSubject.asObservable();
   isEndGame$ = this.isEndGameSubject.asObservable();
 
   /**
@@ -67,6 +69,7 @@ export class CardControllerService {
       this.shuffleAndDuplicateCards(this.initialCards)
     );
     this.matchedCardsSubject.next([]);
+    this.lastMatchedPairSubject.next([]);
     this.isChecking = false;
     this.isHidingPair = false;
     this.firstCard = null;
@@ -171,12 +174,32 @@ export class CardControllerService {
         return c;
       });
       this.gamesCardsSubject.next(updatedCards);
-      this.addMatchedCard(card);
+
+      if (this.isLastPair()) {
+        this.lastMatchedPairSubject.next([this.firstCard!]);
+        this.checkEndGame();
+      } else {
+        this.addMatchedCard(card);
+      }
+
       this.clearSelectedCards();
       this.isHidingPair = false;
     }, 500);
   }
 
+  private isLastPair(): boolean {
+    const matchedCount = this.matchedCardsSubject.value.length;
+    return matchedCount === this.initialCards.length - 1;
+  }
+  private hasLastMatchedPair(): boolean {
+    if (this.lastMatchedPairSubject.value.length > 0) {
+      console.log('true has par');
+      console.log(this.lastMatchedPairSubject.value);
+      return true;
+    }
+    console.log('false has par');
+    return false;
+  }
   /**
    * Adds a card to the matched cards list if not already present
    * @param card - Card to add
@@ -186,8 +209,6 @@ export class CardControllerService {
 
     if (!matchedCards.some((matchedCard) => matchedCard.id === card.id)) {
       this.matchedCardsSubject.next([...matchedCards, card]);
-
-      this.checkEndGame();
     }
   }
 
@@ -195,10 +216,7 @@ export class CardControllerService {
    * Checks if the game is over and updates the end game state
    */
   private checkEndGame() {
-    const matchedCardsCount = this.matchedCardsSubject.value.length;
-    const totalCardsCount = this.initialCards.length;
-
-    if (matchedCardsCount === totalCardsCount) {
+    if (this.hasLastMatchedPair()) {
       this.isEndGameSubject.next(true);
     }
   }

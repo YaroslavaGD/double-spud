@@ -1,4 +1,11 @@
+:host {
+  flex-grow: 1;
+  display: flex;
+}
+
 .monster-list {
+  display: flex;
+  flex-grow: 1;
   padding: 1.41rem 3.92rem;
 }
 
@@ -17,4 +24,24 @@
 
 .monster + .monster {
   margin-left: 5px;
+}
+
+.prince {
+  color: #ffffff;
+  fill: var(--card-text);
+  cursor: pointer;
+  width: 10.688rem;
+  height: 13.813rem;
+  padding: 0;
+  background-color: var(--card-background);
+}
+
+.prince__image {
+  color: #ffffff;
+  fill: var(--card-text);
+  cursor: pointer;
+  width: 10.688rem;
+  height: 13.813rem;
+  padding: 0;
+  background-color: var(--card-background);
 }
