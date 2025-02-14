@@ -9,4 +9,15 @@ import { RouterModule } from '@angular/router';
   templateUrl: './start.component.html',
   styleUrl: './start.component.scss',
 })
-export class StartComponent {}
+export class StartComponent {
+  private audio = new Audio('assets/sounds/start-button.wav');
+
+  constructor() {
+    this.audio.load();
+  }
+
+  playSound(): void {
+    this.audio.currentTime = 0;
+    this.audio.play();
+  }
+}

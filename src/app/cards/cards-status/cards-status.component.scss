@@ -10,12 +10,26 @@
 }
 
 .monster {
+  position: relative;
   display: inline-flex;
   width: 120px;
   height: 154px;
-  padding: 10px;
   background: var(--card-background);
   cursor: pointer;
+}
+
+.monster::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url(/assets/ui/cross.png);
+  background-repeat: no-repeat;
+  background-position: unset;
+  background-size: cover;
 }
 
 .monster__image {
