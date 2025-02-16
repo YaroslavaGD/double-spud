@@ -1,12 +1,13 @@
 :host {
   display: block;
-  width: 10.75rem;
-  height: 13.5rem;
+  width: 100%;
+  height: auto;
 }
 
 .card {
-  width: 10.75rem;
-  height: 13.5rem;
+  min-width: 13vh;
+  max-width: 10.75rem;
+  height: auto;
   background-color: var(--card-background);
   color: var(--card-text);
   border: none;

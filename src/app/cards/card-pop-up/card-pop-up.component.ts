@@ -12,8 +12,8 @@ import { CardControllerService } from 'src/app/services/card-controller.service'
   styleUrl: './card-pop-up.component.scss',
 })
 export class CardPopUpComponent implements OnInit, OnDestroy {
-  private clickSound = new Audio('/assets/sounds/start-button.wav');
-  private endSound = new Audio('/assets/sounds/end-game.wav');
+  private clickSound = new Audio('assets/sounds/start-button.wav');
+  private endSound = new Audio('assets/sounds/end-game.wav');
   card: Card | null = null;
   isOpen: boolean = false;
   lastCards: Card[] = [];

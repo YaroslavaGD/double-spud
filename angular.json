@@ -20,6 +20,8 @@
             "outputPath": "dist/double-spud",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/double-spud/",
+            "deployUrl": "/double-spud/",
             "polyfills": [
               "zone.js"
             ],
@@ -103,6 +105,9 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

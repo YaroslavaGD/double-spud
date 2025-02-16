@@ -12,7 +12,7 @@ import { CardControllerService } from '../services/card-controller.service';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  private clickSound = new Audio('/assets/sounds/start-button.wav');
+  private clickSound = new Audio('assets/sounds/start-button.wav');
   constructor(private cardControllerService: CardControllerService) {}
 
   onResetGame() {

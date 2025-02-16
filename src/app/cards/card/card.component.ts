@@ -14,9 +14,9 @@ import { CardControllerService } from '../../services/card-controller.service';
 })
 export class CardComponent {
   @Input() card!: Card;
-  private clickSound = new Audio('/assets/sounds/menu-button-click.wav');
-  private chewSound = new Audio('/assets/sounds/chew.ogg');
-  private hmphSound = new Audio('/assets/sounds/hmph.wav');
+  private clickSound = new Audio('assets/sounds/menu-button-click.wav');
+  private chewSound = new Audio('assets/sounds/chew.ogg');
+  private hmphSound = new Audio('assets/sounds/hmph.wav');
 
   constructor(private cardControllerService: CardControllerService) {}
 
