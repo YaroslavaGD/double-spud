@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--card-text);
+  min-width: 82vw;
+  max-width: 99.063rem;
+  padding: 1.3rem 0 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.process {
+  display: flex;
+  width: 100%;
+}
+
+.princess,
+.prince {
+  color: #ffffff;
+  fill: var(--card-text);
+  cursor: pointer;
+  width: 10.688rem;
+  height: 13.813rem;
+  padding: 0;
+  background-color: var(--card-background);
+}

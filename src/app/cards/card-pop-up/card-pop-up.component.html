@@ -1,0 +1,18 @@
+<div class="dialog" [class.dialog--open]="isOpen">
+  <div class="dialog-inner" *ngIf="card; else noCard">
+    <button class="dialog__close" (click)="onClose()">
+      <img src="assets/close.svg" alt="" />
+    </button>
+    <h2 class="dialog__header">Конец игры</h2>
+    <h3 class="dialog__name">{{ card.name }}</h3>
+    <img class="dialog__img" [src]="card.imageBig" [alt]="card.name" />
+    <p class="dialog__text">{{ card.description }}</p>
+  </div>
+  <ng-template #noCard>
+    <button class="dialog__close" (click)="onClose()">
+      <img src="assets/close.svg" alt="" />
+      <h2 class="dialog__header">Принц не найден</h2>
+      <p class="dialog__text">Пожалуйста попробуйте еще раз</p>
+    </button>
+  </ng-template>
+</div>
